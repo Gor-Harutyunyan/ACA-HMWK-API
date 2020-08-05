@@ -1,0 +1,46 @@
+/* Custom style for every item*/
+body,
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.film-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.film-container div {
+  flex: 1 1 25%;
+  margin: 15px;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.film-info {
+  height: 100%;
+  list-style-type: none;
+  border-radius: 7px;
+  padding: 0;
+}
+
+.film-info li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.film-info li h4 {
+  min-width: 150px;
+  margin: 0;
+}
+
+.film-info li p {
+  border-radius: 5px;
+  background: #c5c1c1;
+  padding: 5px;
+  margin: 0 0 0 10px;
+}
