@@ -3,7 +3,6 @@ const filmContainer = document.querySelector(".film-container");
 fetch("https://ghibliapi.herokuapp.com/films")
   .then((data) => data.json())
   .then((data) => {
-    console.log(data);
     data.forEach(({ title, description, director, producer, release_date }) => {
       const newUl = createNewFilm([
         title,
