@@ -5,12 +5,17 @@ const pagination = document.querySelector(".pagination");
 
 const BASE_URL = `http://openlibrary.org/search.json?q=`;
 
-async function doGet(param, currentPage) {
+/**
+ * fetches the data by book name and page
+ * @param {string} param - name of the book converted to URL part
+ * @param {number} page - indicates which page to load
+ */
+async function doGet(param, page) {
   let response;
-  if (currentPage === 1) {
+  if (page === 1) {
     response = await fetch(`${BASE_URL}${param}`);
   } else {
-    response = await fetch(`${BASE_URL}${param}&page=${currentPage}`);
+    response = await fetch(`${BASE_URL}${param}&page=${page}`);
   }
 
   let json = await response.json();
@@ -24,6 +29,9 @@ const state = {
   currentPage: 1,
 };
 
+/**
+ * renders results of search value
+ */
 async function render() {
   books.textContent = "Loading...";
   pagination.innerHTML = "";
@@ -47,6 +55,10 @@ async function render() {
   });
 }
 
+/**
+ * creates pagination depending on search results num found
+ * @param {number} value - quantity of pages to create
+ */
 function createPages(value) {
   pagination.innerText = "";
   for (let i = 1; i <= value; i++) {
@@ -59,6 +71,10 @@ function createPages(value) {
   }
 }
 
+/**
+ * creates HTML element using each results info
+ * @param {object} book - object with information about book
+ */
 function createElement(book) {
   const bookInfo = document.createElement("div");
   bookInfo.className = "book-info";
